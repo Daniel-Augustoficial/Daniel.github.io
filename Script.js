@@ -84,23 +84,51 @@ function setupNavigation() {
 
 // Função para iniciar efeitos de digitação
 function initTypingEffects() {
-    // Adiciona efeito de digitação aos títulos e textos importantes
-    const elementsToAnimate = document.querySelectorAll("h1, h2, .quote");
-    
-    elementsToAnimate.forEach(element => {
-        const text = element.textContent;
-        element.textContent = "";
-        
-        let i = 0;
-        const typing = setInterval(() => {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(typing);
+    const element = document.getElementById("typewriter");
+    const phrases = [
+        "Bem-vindo ao meu portfólio!",
+        "Conectando inovação e aprendizado...",
+       "Explorando o universo da tecnologia...",
+       "Construindo o futuro, um projeto por vez..."
+    ];
+    const typingSpeed = 80;
+    const erasingSpeed = 40;
+    const pauseTime = 1500;
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    // Adiciona estrutura com cursor
+    element.innerHTML = '<span id="typed-text"></span><span class="cursor">_</span>';
+    const typedText = document.getElementById("typed-text");
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (!isDeleting) {
+            typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(type, pauseTime);
+                return;
             }
-        }, 50);
-    });
+        } else {
+            typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+        }
+
+        setTimeout(type, isDeleting ? erasingSpeed : typingSpeed);
+    }
+
+    type();
 }
 
 // Função para criar efeito de matriz no fundo
