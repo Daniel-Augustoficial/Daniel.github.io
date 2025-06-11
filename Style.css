@@ -417,3 +417,11 @@ footer {
     }
 }
 
+.cursor {
+    display: inline-block;
+    color: #00ff00;
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+}
+
+
