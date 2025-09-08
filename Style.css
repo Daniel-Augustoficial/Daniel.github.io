@@ -1,0 +1,427 @@
+/* Fontes */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
+
+/* Variáveis */
+:root {
+    --primary-color: #00ff00;
+    --primary-glow: 0 0 10px #00ff00;
+    --secondary-color: #00cc00;
+    --dark-bg: #000000;
+    --dark-bg-transparent: rgba(0, 0, 0, 0.9);
+    --border-color: #00ff00;
+    --text-color: #00ff00;
+    --highlight-color: #ffffff;
+    --font-mono: 'Share Tech Mono', monospace;
+    --font-display: 'VT323', monospace;
+}
+
+/* Reset e estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-mono);
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97)), 
+                url('./images/matrix-bg.png');
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+/* Tela de carregamento */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-content {
+    text-align: center;
+    max-width: 80%;
+}
+
+.hacker-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: pulse 1.5s infinite;
+}
+
+.loading-content h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: var(--primary-glow);
+    letter-spacing: 2px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(0, 255, 0, 0.2);
+    border: 1px solid var(--border-color);
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.loading-quote {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.loading-subtext {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Navegação */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    border-color: var(--border-color);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    text-shadow: var(--primary-glow);
+}
+
+/* Seções */
+.section {
+    min-height: 100vh;
+    padding: 6rem 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    background-color: var(--dark-bg-transparent);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    animation: scan 3s linear infinite;
+    box-shadow: 0 0 15px var(--primary-color);
+    opacity: 0.7;
+}
+
+/* Seção Início */
+#inicio h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: var(--primary-glow);
+    letter-spacing: 2px;
+}
+
+#inicio p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+}
+
+.focus {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--highlight-color);
+    text-shadow: var(--primary-glow);
+    transform: translateY(-3px);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.tech-stack span {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.tech-stack span:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.quote {
+    font-style: italic;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--border-color);
+}
+
+/* Seção Sobre */
+.profile-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.profile-image {
+    flex: 0 0 200px;
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.profile-content {
+    flex: 1;
+}
+
+.profile-content h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: var(--primary-glow);
+}
+
+.highlight {
+    color: var(--highlight-color);
+    text-shadow: var(--primary-glow);
+    font-weight: bold;
+}
+
+.profile-content h3 {
+    margin: 1.5rem 0 1rem;
+    font-size: 1.3rem;
+}
+
+.profile-content ul {
+    list-style-type: none;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-content ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.profile-content ul li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* Seção Projetos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.project-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: var(--primary-glow);
+}
+
+.project-card p {
+    margin-bottom: 1.5rem;
+    min-height: 3rem;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Animações */
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(2000%); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-image {
+        margin-bottom: 2rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #inicio h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section {
+        padding: 5rem 1rem 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-links a {
+        font-size: 1rem;
+        padding: 0.3rem 0.7rem;
+    }
+    
+    #inicio h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    color: #00ff00;
+    font-weight: bold;
+    animation: blink 0.7s infinite;
+}
+
+
